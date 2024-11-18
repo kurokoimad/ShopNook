@@ -1,0 +1,59 @@
+/* Ensure the breadcrumb container is a flex container */
+nav {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  font-size: 14px;
+  margin: 20px 0;
+  margin-top: 100px;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 10px 20px;
+  background: #fff; /* White background for clean look */
+  border-radius: 8px; /* Rounded corners for a softer look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Style links within breadcrumb */
+a {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #020212; /* Primary color for links */
+  margin-right: 10px; /* Space between breadcrumb items */
+  padding: 5px 10px;
+  position: relative;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Add hover effect */
+a:hover {
+  background-color: #ff8400; /* Background color on hover */
+  color: #fff; /* Text color on hover */
+}
+
+/* Add a subtle gradient effect to separators */
+a:not(:last-child)::after {
+  content: '>';
+  color: #6c757d; /* Light grey color for separator */
+  margin: 0 10px;
+  font-size: 18px; /* Larger font size for separator */
+  transition: color 0.3s; /* Smooth transition for separator color */
+}
+
+/* Change separator color on hover */
+nav:hover a:not(:last-child)::after {
+  color: #007bff; /* Change separator color on hover */
+}
+
+/* Style last breadcrumb item */
+nav a:last-child {
+  color: #6c757d; /* Grey color for the last item */
+  font-weight: bold; /* Make the last item bold */
+  cursor: default; /* Default cursor for non-link item */
+}
+
+/* Optional: Add hover effect to breadcrumb container */
+nav:hover {
+  background: #f8f9fa; /* Slightly darker background on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.37); /* Slightly darker shadow on hover */
+}

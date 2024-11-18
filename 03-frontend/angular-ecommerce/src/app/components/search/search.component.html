@@ -1,0 +1,11 @@
+<div class="search-container">
+    <input #searchInput class="search-input"  
+    type="text" placeholder="Search for products ..."
+    (keyup.enter)="searchProducts(searchInput.value)"/>
+    <button (click)="searchProducts(searchInput.value)"class="au-btn-submit">
+        <a href="#" class="search-btn">
+            <i class="fas fa-search"></i>      
+        </a>
+    </button>
+
+</div>

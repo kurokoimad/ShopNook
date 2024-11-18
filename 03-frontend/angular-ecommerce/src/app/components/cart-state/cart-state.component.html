@@ -1,0 +1,11 @@
+<div class="cart-area">
+  <a routerLink = "/cart-details" class="cart-link">
+    <div class="cart-content">
+      <div class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-quantity">{{ totalQuantity }}</span>
+      </div>
+      <div class="total-price">{{ totalPrice | currency: 'EUR' }}</div>
+    </div>
+  </a>
+</div>

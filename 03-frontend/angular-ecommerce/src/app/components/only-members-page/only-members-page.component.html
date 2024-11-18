@@ -1,0 +1,72 @@
+<div class="member-page">
+
+    <!-- Hero Section -->
+    <div *ngIf="isUserAuthenticated && fullNameOfUser" class="hero-section">
+        <h1>Welcome {{ fullNameOfUser }}!</h1>
+        <p>Enjoy exclusive deals and rewards just for you.</p>
+    </div>
+
+    <!-- Exclusive Offers Section -->
+    <div class="alert alert-info member-special" role="alert">
+        <h3 class="member-special-title">Exclusive Member Benefits</h3>
+        <p class="member-special-message">We appreciate your membership.</p>
+        <p class="member-special-discount">
+            <span class="discount-badge">20% OFF</span> on your next purchase!
+        </p>
+        <p class="member-special-offer">
+            Enjoy special deals on select products.
+        </p>
+        <a href="/shop" class="cta-button-hero">Start Shopping</a>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="featured-products">
+        <h2>Featured Products</h2>
+        <div class="product-list">
+            <div class="product-item">
+                <img src="../../assets/images/products/purses/ShopNook_Purse_1.png" alt="Product 1">
+                <h4>Casual Purse</h4>
+                <p>€16.99</p>
+                <a href="/products/76" class="product-button">View Details</a>
+            </div>
+            <div class="product-item">
+                <img src="../../assets/images/products/fitness/Dumbbell_Set_A1.png" alt="Product 2">
+                <h4>Dumbbell Set</h4>
+                <p>€149.99</p>
+                <a href="/products/154" class="product-button">View Details</a>
+            </div>
+            <div class="product-item">
+                <img src="../../assets/images/products/music/Studio_Monitor_A1.png" alt="Product 3">
+                <h4>Studio Monitor</h4>
+                <p>€499.99</p>
+                <a href="/products/130" class="product-button">View Details</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Member Testimonials -->
+    <div class="testimonials">
+        <h2>What Our Members Say</h2>
+        <div class="testimonial-list">
+            <div class="testimonial-item">
+                <p>"The best shopping experience I've ever had! Great products and amazing discounts."</p>
+                <h5>- John Doe</h5>
+            </div>
+            <div class="testimonial-item">
+                <p>"I love being a member! The exclusive deals are fantastic."</p>
+                <h5>- Jane Smith</h5>
+            </div>
+            <div class="testimonial-item">
+                <p>"Excellent customer service and quality products. Highly recommended!"</p>
+                <h5>- Emily Johnson</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Signup -->
+    <div class="newsletter-signup">
+        <h2>Stay Updated with Our Newsletter</h2>
+        <p>Subscribe to receive the latest news, offers, and promotions.</p>
+    </div>
+
+</div>

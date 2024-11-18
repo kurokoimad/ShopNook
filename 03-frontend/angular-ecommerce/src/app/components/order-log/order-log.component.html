@@ -1,0 +1,39 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <h3>Your Orders</h3>
+
+            <div *ngIf="orderLogList.length > 0">
+                <table class="table table-bordered">
+                    <tr>
+                        <th width="20%">Order Tracking Reference</th>
+                        <th width="10%">Total Price</th>
+                        <th width="10%">Total Quantity</th>
+                        <th width="10%">Date</th>
+                    </tr>
+
+                    <tr *ngFor="let tempOrderLog of orderLogList">
+                        <td>
+                            {{ tempOrderLog.orderTrackingReference }}
+                        </td>
+                        <td>
+                            {{ tempOrderLog.sumPrice | currency: 'EUR' }}
+                        </td>
+                        <td>
+                            {{ tempOrderLog.sumQuantity }}
+                        </td>
+                        <td>
+                            {{ tempOrderLog.dateCreated | date: 'medium' }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- if the customer has no previous purchases, then show a message -->
+            <div *ngIf="orderLogList.length == 0" class="alert alert-warning col-md-12" role="alert">
+                No orders found.
+            </div>
+
+        </div>
+    </div>
+</div>

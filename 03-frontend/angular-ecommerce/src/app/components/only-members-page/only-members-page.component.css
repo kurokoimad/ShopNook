@@ -1,0 +1,263 @@
+.member-page {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    padding-top: 80px; 
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    background-color: #007b8a;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 40px;
+  }
+  
+  .hero-section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .cta-button-hero {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff6f61;
+    color: #fff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+  }
+  
+  .cta-button-hero:hover {
+    background-color: #e05b50;
+  }
+  
+  /* Exclusive Offers Section */
+  .member-special {
+    text-align: center;
+    padding: 30px;
+    border: 2px solid #b0e8f0;
+    background-color: #e0f7fa;
+    color: #007b8a;
+    border-radius: 10px;
+    margin: 30px 0;
+    box-shadow: 0px 4px 15px rgba(0, 123, 138, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .member-special:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 20px rgba(0, 123, 138, 0.3);
+  }
+  
+  .member-special-title {
+    margin: 0 0 15px 0;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .member-special-message {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
+  .member-special-discount {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff6f61;
+  }
+  
+  .discount-badge {
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
+  
+  .member-special-offer {
+    margin: 20px 0;
+    font-size: 16px;
+  }
+  
+  /* Featured Products Section */
+  .featured-products {
+    text-align: center;
+    padding: 20px;
+    background-color: #e0f7fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+  }
+  
+  .featured-products h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #007b8a;
+  }
+  
+  .product-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .product-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+    width: 250px; /* Set a fixed width */
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-item img {
+    width: 100%; /* Makes the image fill the container width */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image covers the container */
+    border-bottom: 1px solid #ddd; /* Optional: add a border below the image */
+  }
+  
+  .product-item h4 {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  
+  .product-item p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .product-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+
+  .product-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Testimonials Section */
+  .testimonials {
+    margin: 40px 0;
+    background-color: #e0f7fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 123, 138, 0.2);
+  }
+  
+  .testimonials h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #007b8a;
+  }
+  
+  .testimonial-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .testimonial-item {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 30%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .testimonial-item p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-style: italic;
+  }
+  
+  .testimonial-item h5 {
+    font-size: 18px;
+    color: #007b8a;
+  }
+  
+  /* Newsletter Signup Section */
+  .newsletter-signup {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #007b8a;
+    color: white;
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+  
+  .newsletter-signup h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  .newsletter-signup p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .newsletter-form {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .newsletter-form input[type="email"] {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    width: 300px;
+    margin-right: 10px;
+  }
+  
+  .newsletter-form button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .newsletter-form button[type="submit"]:hover {
+    background-color: #e05b50;
+  }
+  

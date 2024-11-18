@@ -1,0 +1,343 @@
+\chapter{Implementierung}\label{Bausteine}
+
+In diesem Kapitel wird die Implementierung der prinzipielle Funktionsweise der Anwendung beschrieben.
+Als Grundlage für alle Seiten in der Anwendung wird ein globales Layout
+\verb*|app.component.html| angelegt, welches für alle übersetzten Seiten verwendet wird. Darin wird definiert, welche Komponenten auf jeder Seite angezeigt werden sollen.
+
+
+\section{Startseite}\index{Abschnitt}\label{startseite}
+
+Für dieses Projekt sind standardmäßig für alle Seiten die Komponenten Header, Menu, Fotter und Hauptinhalt definiert. Im Header ist eine Navigation zwischen verschiedenen Seiten, das Einloggen mit Benutzerkonto und das Suchen nach bestimmten Produkten. Der Footer zeigt weiterführende Links mit Information zum About-us, Contact-us und Help. Dazu werden als Komponenten im Ordner \verb*|/components| Komponenten wie z.B \verb*|/about-us|, \verb*|/search| oder \verb*|/product-category-menu| angelegt, in dem diese Funktionalitäten eingebaut werden.
+
+\subsection{header}
+
+In der Datei \verb*|/app.component.html| werden drei Komponenten im Header, wie man in \ref{listing3.1} sehen kann, aufgerufen.
+
+\begin{lstlisting}[language=HTML, label=listing3.1 , caption=Aufruf von Header-Komponenten]
+<app-search></app-search>
+<app-login-state></app-login-state>
+<app-cart-state></app-cart-state>
+\end{lstlisting}
+
+Das Komponent \verb*|/app-search| ist dafür zuständig, den Benutzern eine Suchfunktion bereitzustellen, mit der sie schnell und einfach nach Produkten suchen können.
+In \ref{listing3.2} kann man eine HTML-Struktur der Komponente \verb*|/app-search| sehen:
+\newpage
+
+\begin{lstlisting}[language=HTML, label=listing3.2, caption=HTML-Struktur der app-search-Komponente]
+<div class="search-container">
+<input #searchInput class="search-input"  
+type="text" placeholder="Search for products ..."
+(keyup.enter)="searchProducts(searchInput.value)"/>
+<button (click)="searchProducts(searchInput.value)"class="au-btn-submit">
+<a href="#" class="search-btn">
+<i class="fas fa-search"></i>      
+</a>
+</button>
+</div>
+\end{lstlisting}
+
+Das Eingabefeld ist mit der Angular-Komponente über die Template Referenzvariable \verb*|#searchInput| verbunden. Benutzer können hier ihre Suchanfragen eingeben.
+Die Suche kann auf zwei Arten ausgelöst werden:
+
+\begin{enumerate}
+	\item Durch Drücken der Enter-Taste: Das Ereignis \verb*|keyup.enter| ist mit der Methode \verb*|searchProducts()| verbunden, sodass die Suche gestartet wird, wenn der Benutzer die Enter-Taste drückt.
+	\item Durch Klicken auf die Suchschaltfläche: Die Suche kann auch durch Klicken auf die Suchschaltfläche gestartet werden, die ebenfalls an die Methode \verb*|searchProducts()| gebunden ist.
+\end{enumerate}
+
+Die \verb*|/cart-state| bietet den Benutzern Echtzeit-Updates über den Zustand ihres Einkaufswagens, einschließlich der Gesamtanzahl der Artikel und des Gesamtpreises. Diese Komponente ermöglicht es den Benutzern, problemlos auf die Warenkorbdetails zuzugreifen und zur Kasse zu gehen oder den Inhalt ihres Warenkorbs zu ändern. Die Html-Struktur dieser Komponente wird in \ref{listing3.4} hervorgehoben: 
+
+\begin{lstlisting}[language=, label=listing3.4, caption=HTML-Struktur der cart-state-Komponente]
+<div class="cart-area">
+<a routerLink = "/cart-details" class="cart-link">
+<div class="cart-content">
+<div class="cart-icon">
+<i class="fas fa-shopping-cart"></i>
+<span class="cart-quantity">{{ totalQuantity }}</span>
+</div>
+<div class="total-price">{{ totalPrice | currency: 'EUR' }}</div>
+</div>
+</a>
+</div>
+\end{lstlisting}
+
+Die Komponente zeigt die Gesamtanzahl der Artikel im Warenkorb (totalQuantity) und den Gesamtpreis (totalPrice) an, die dynamisch aktualisiert werden, wenn der Benutzer mit dem Warenkorb interagiert. Sie dient auch als Link zur Warenkorbdetailseite \verb*|/cart-details|, sodass Benutzer den Inhalt ihres Warenkorbs anzeigen und ändern können.
+
+
+Zusätzlich zu den Komponenten \verb*|/app-search| und \verb*|/app-cart-state| ist die Komponente \verb*|/app-login-state|, wie in \ref{listing3.1} dargestellt, für die Verwaltung des Benutzerauthentifizierungsstatus zuständig. Diese Komponente ändert ihre Anzeige dynamisch, je nachdem, ob ein Benutzer angemeldet ist oder nicht.
+Die Komponente \verb*|/login-state| wurde entwickelt, um eine optimierte Benutzererfahrung zu bieten, indem sie je nach Authentifizierungsstatus des Benutzers verschiedene Optionen anzeigt. Wenn ein Benutzer nicht angemeldet ist, zeigt die Komponente eine einfache Schaltfläche „Login“ an. Wenn der Benutzer auf diese Schaltfläche klickt, wird er auf die Anmeldeseite weitergeleitet.\\
+Sobald sich der Benutzer jedoch erfolgreich anmeldet, verhält sich die Komponente dynamisch, um die Benutzerinteraktion zu verbessern. Die folgenden Elemente werden angezeigt:
+
+\begin{itemize}
+	\item \textbf{Willkommensnachricht} : Eine personalisierte Nachricht heißt den Benutzer willkommen und zeigt seinen vollständigen Namen an, der vom Okta-Authentifizierungsdienst abgerufen wird.
+	\item \textbf{Schaltfläche „Logout“} : Es wird eine Schaltfläche „Logout“ angezeigt, mit der Benutzer ihre Sitzung beenden und sich sicher abmelden können. Diese Schaltfläche ruft die in der Komponente definierte Funktion logout() in \verb*|login-state.component.ts| auf, die den OktaAuth-Dienst verwendet, um den Benutzer abzumelden und die vorhandenen Token zu löschen. 
+	\item \textbf{Navigations-Schaltflächen} : Zwei zusätzliche Schaltflächen, „Member“ und „Orders“, werden angezeigt, sobald der Benutzer authentifiziert ist.\\ 
+	„Member“ leitet den Benutzer zur \verb*|only-members-page.component.html|, wo er auf mitgliedsspezifische Funktionen und Informationen zugreifen kann.\\
+	„Orders“ führt den Nutzer zur Seite \verb*|order-log.component.html|, wo er einen Überblick über seine bisherigen Bestellungen erhält.
+\end{itemize}
+
+\subsection{Menu}
+
+\verb*|app-product-category-menu| implementiert die Seitenleiste der Anwendung, die als dynamisches Navigationsmenü fungiert. Sie ermöglicht es den Benutzern, schnell auf verschiedene Produktkategorien zuzugreifen. Die Komponente ist auf der linken Seite platziert und bleibt in der Desktop-Ansicht immer sichtbar, um eine einfache Navigation zu gewährleisten. In der \ref{listing3.6} wurde die HTML-Struktur der Komponente \verb*|app-product-category-menu.html| dargestellt:
+
+\begin{lstlisting}[language=, label=listing3.6, caption=HTML-Struktur der app-product-category-menu-Komponente]
+<section class="app">
+<aside class="sidebar">
+<header>
+Menu
+</header>
+<nav class="sidebar-nav">
+<ul class="list-unstyled navbar-list">
+<li *ngFor="let tempProductCategory of productCategories">
+<a routerLink="/category/{{tempProductCategory.id}}" 
+routerLinkActive="active-link"> {{tempProductCategory.categoryName}}
+</a>
+</li>
+</ul>
+</nav>
+</aside>
+</section>
+\end{lstlisting}
+
+Die Seitenleiste \verb*|sidebar| zeigt eine Liste von Produktkategorien an, die dynamisch aus dem Backend abgerufen werden. Dies wird durch die Verwendung der Angular-Direktive \verb*|*ngFor| erreicht, die über die productCategories-Liste iteriert und für jede Kategorie ein Navigationslink erstellt.\\
+Jeder Link im Navigationsmenü verwendet also die Angular-Direktive \verb*|routerLink|, um die Benutzer zu einer Seite weiterzuleiten, die Produkte in der ausgewählten Kategorie anzeigt. Der routerLinkActive-Attributwert „active-link'' wird verwendet, um den aktiven Status des Links hervorzuheben, wenn die Kategorie aktiv ist.
+
+
+\section{Online-Shopping}
+
+Der Online-Shopping-Prozess in der Anwendung besteht aus mehreren Hauptfunktionen, die alle darauf abzielen, den Benutzern ein nahtloses Einkaufserlebnis zu bieten. Dieser Prozess umfasst das Durchsuchen von Produkten, das Auswählen von Produkten, das Hinzufügen von Produkten zum Warenkorb und das Verwalten des Warenkorbs.
+
+\subsection{Darstellung von Produkten auf der Produktseite}
+
+Durch das Aufrufen von der Datei \verb*|product-list-grid.component.html|, wird eine Liste der verfügbaren Produkte in einer grid-basierten oder tabellenbasierten Ansicht gezeigt. Dies ermöglicht es den Benutzern, verschiedene Produkte schnell zu durchsuchen und auszuwählen. \\
+Die Produktliste bietet eine visuelle Darstellung der Produkte mit einem Bild, dem Produktnamen, dem Preis und einer Schaltfläche zum Hinzufügen zum Warenkorb.
+
+\subsection{Auswahl und Hinzufügen von Produkten zum Warenkorb}
+
+Benutzer können Produkte auswählen, indem sie auf das Produktbild oder den Namen klicken, um zur Produktdetailseite zu navigieren. Alternativ können sie direkt das Produkt durch einen Klick auf „Add to cart'' zur Einkaufsliste hinzufügen. \verb*|addItemToCart()| (siehe \ref{listing3.11}) in der Komponente \verb*|product-list.component.ts| wird verwendet, um ein Produkt zum Warenkorb hinzuzufügen.
+
+\begin{lstlisting}[language=, label=listing3.11, caption=Funktion zum Hinzufügen von Produkten zum Warenkorb]
+addItemToCart(myProduct: Product) {
+	console.log(`Adding to the shopping cart: ${myProduct.name}, 
+	${myProduct.itemPrice}`);
+	const cartItem = new CartBasket(myProduct);
+	this.cartService.addToCart(cartItem);
+}
+\end{lstlisting}
+
+Die Funktion nimmt ein Product-Objekt als Parameter, das das ausgewählte Produkt repräsentiert und erstellt ein neues CartBasket-Objekt, das die Produktdetails enthält, und ruft \verb*|addToCart()| aus der Datei \verb*|cart.service.ts| auf, um das Produkt zum Warenkorb hinzuzufügen.
+
+\subsection{Warenkorbverwaltung}
+
+Nach dem Hinzufügen von Produkten zum Warenkorb können Benutzer ihren Warenkorb verwalten, indem sie Produkte entfernen, die Menge ändern oder zur Kasse gehen.
+
+\begin{itemize}
+	\item \textbf{Produkt entfernen}: Die Funktion \verb*|removeItemFromCart|, die in \ref{listing3.12} dargestellt wurde, entfernt ein bestimmtes Produkt aus dem Warenkorb.
+	\item \textbf{Menge ändern}: Die Benutzeroberfläche kann auch Steuerelemente bereitstellen, um die Menge eines bestimmten Produkts zu ändern. Diese Änderungen werden ebenfalls über die Funktion \verb*|decreaseQuantity| in \verb*|cart-service.ts| verarbeitet (siehe \ref{listing3.12}).
+\end{itemize}
+
+\begin{lstlisting}[language=, label=listing3.12, caption=Warenkorb Service Funktionen]
+remove(cartItem: CartBasket) {
+	const index = this.cartItems.findIndex(cartItem => 
+	cartItem.id === cartItem.id);
+	
+	if(index > -1)
+		this.cartItems.splice(index, 1)
+	
+		this.calculateCartTotals();
+}
+
+decreaseQuantity(cartItem: CartBasket) {
+	cartItem.quantity--;
+	
+	if(cartItem.quantity == 0)
+	{
+		this.remove(cartItem);
+	}
+	else
+	{
+		this.calculateCartTotals();
+	}
+}
+\end{lstlisting}
+
+\subsection{Paginierung und Suchfunktionalität}
+
+Die Produktliste unterstützt die Paginierung und eine Suchfunktionalität, um eine große Anzahl von Produkten effizient zu handhaben.
+
+\begin{itemize}
+	\item \textbf{Paginierung}: Die Paginierung ermöglicht es den Benutzern, die Produktliste seitenweise zu durchsuchen. Die Paginierungssteuerung \verb*|ngb-pagination| aktualisiert die Anzeige basierend auf der ausgewählten Seite und der Anzahl der Elemente pro Seite.
+	\item \textbf{Suchfunktionalität}: wie es in \ref{startseite} erwähnt wurde, können die Benutzer die Produktsuche verwenden, um spezifische Artikel zu finden. Die Anwendung verarbeitet die Suchanfragen, ruft die entsprechenden Produkte ab und zeigt sie auf der Seite an.
+\end{itemize}
+
+\newpage
+In den Folgenden wird die implementierung der Suchfunktionalität hervorgehoben: 
+
+\begin{lstlisting}[language=, label=listing3.13, caption=Verwaltung der Produktliste und Suche]
+manageSearchProducts() {
+	const myKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
+	
+	if (this.formerKeyword != myKeyword) {
+		this.pageNumber = 1;
+	}
+	
+	this.formerKeyword = myKeyword;
+	
+	console.log(`keyword=${myKeyword}, pageNumber=${this.pageNumber}`);
+
+	this.productService.searchProductsPaginated(this.pageNumber - 1,
+ this.pageSize, myKeyword)
+	.subscribe(this.processProductData());
+}
+
+
+manageProductList() {
+	const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+	
+	if (hasCategoryId) {
+		this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
+	} else {
+		this.currentCategoryId = null;
+	}
+	
+	if (this.previousCategoryId !== this.currentCategoryId) {
+		this.pageNumber = 1;
+	}
+	
+	this.previousCategoryId = this.currentCategoryId;
+	
+	console.log(`currentCategoryId=${this.currentCategoryId}, 
+	pageNumber=${this.pageNumber}`);
+	
+	if (this.currentCategoryId !== null) {
+		this.productService.getProductListPaginated(this.pageNumber - 1, 
+		this.pageSize, this.currentCategoryId)
+		.subscribe(this.processProductData());
+	} else {
+		this.productService.getAllProductsPaginated(this.pageNumber - 1, 
+		this.pageSize).subscribe(this.processProductData());
+	}
+}
+\end{lstlisting}
+
+Das Online-Shopping-Modul der Anwendung ist so konzipiert, dass es eine benutzerfreundliche Oberfläche zum Durchsuchen, Auswählen und Verwalten von Produkten bietet. \\
+Durch die Verwendung von Komponenten wie \verb*|product-list-grid.component.html| und \verb*|product-list-table.component.html| wird eine dynamische und interaktive Benutzeroberfläche geschaffen, die die Benutzererfahrung verbessert und das Einkaufen erleichtert.
+
+\section{Bezahlprozess}\index{Formel}
+
+Der Checkout-Prozess ist ein zentraler Bestandteil des Online-Shopping-Erlebnisses in der ShopNook-Anwendung. In diesem Prozess werden die Benutzer durch die Eingabe ihrer Lieferinformationen und Zahlungsdetails geführt, um eine Bestellung abzuschließen und zu bezahlen. \\
+Der Checkout-Prozess besteht aus mehreren Schritten, die durch das Frontend (Angular) und das Backend (Spring Boot) unterstützt werden. Im Folgenden wird der Checkout-Prozess detailliert beschrieben.
+
+\subsection{Frontend}
+
+Der Checkout-Prozess beginnt auf der Frontend-Seite, die in Angular mit der Komponente \verb*|checkout.component.ts| in \verb*|/checkout| implementiert ist. Diese Komponente bietet eine benutzerfreundliche Oberfläche für die Eingabe der notwendigen Informationen zur Bestellung und zur Zahlung.\\
+Die wichtigste Abschnitte und Funktionen der Frontend-Seite sind wie folgt definiert:
+
+\begin{itemize}
+	\item \textbf{Formulare für Benutzerinformationen}:  \verb*|checkout.component.html| nutzt Angular \verb*|FormBuilder|, um ein Formular \verb*|formGroupCheckout| zu erstellen, das verschiedene Abschnitte für Kundeninformationen, Lieferadresse, Zahlungsadresse und Kreditkartendetails enthält.
+	\item \textbf{Integration mit Stripe für Zahlungsabwicklung:}
+		\begin{itemize}
+			\item Die Stripe-Bibliothek wird initialisiert, um eine sichere Zahlungsabwicklung zu gewährleisten. Stripe-Elemente (z.B. für die Eingabe von Kreditkartendetails) werden in die Checkout-Seite eingebettet.
+			\item Die Methode initializeStripePaymentForm(), wie sie in \ref{listing3.14} dargestellt ist konfiguriert die Stripe-Zahlungskomponente und integriert Validierungslogik für die Kreditkarteneingabe.
+			\item Die Methode submitPurchase() wird aufgerufen, wenn der Benutzer seine Bestellung abschickt. Diese Methode überprüft die Formularvalidierung und erstellt eine Zahlungsabsicht (Payment Intent) über den CheckoutService im Backend.
+		\end{itemize}
+\end{itemize}
+\newpage
+\begin{lstlisting}[language=, label=listing3.14, caption=Integration von Stripe für Zahlungsabwicklung]
+initializeStripePaymentForm() {
+	// Obtain a reference to the Stripe Elements instance
+	var elements = this.stripe.elements();
+	
+	// Create a card input field without showing the postal code field
+	this.cardElement = elements.create('card', { hidePostalCode: true });
+	
+	// Mount the card input component into the 'card-element' container
+	this.cardElement.mount('#card-element');
+
+	// Bind an event listener to handle changes in the card input field
+	this.cardElement.on('change', (event: any) => {
+		// card-errors element
+		this.displayError = document.getElementById('card-errors');
+		
+		if (event.complete) {
+			this.displayError.textContent = "";
+		} 
+		else if (event.error) {
+			// Display validation errors to the customer
+			this.displayError.textContent = event.error.message;
+		}
+	});
+}
+\end{lstlisting}
+
+
+\subsection{Backend}
+
+Das Backend, implementiert in Spring Boot, stellt die notwendige Logik zur Abwicklung von Bestellungen und Zahlungen bereit.\\
+Die Klasse \verb*|CheckoutServiceImplementation| implementiert das CheckoutService-Interface und enthält Methoden zur Bearbeitung der Bestellung und zur Erzeugung einer Zahlungsabsicht mit Stripe, die im folgenden beschrieben werden: 
+
+\begin{itemize}
+	\item \verb*|submitOrder|: angelehnt an \ref{listing3.15} verarbeitet die Methode eine eingehende Bestellung und führt dabei mehrere Schritte durch. Zunächst extrahiert sie die Bestellinformationen aus dem Purchase-DTO. Anschließend wird eine eindeutige Bestellverfolgungsnummer generiert. Die Methode fügt dann die Bestellartikel zur Bestellung hinzu. Es wird überprüft, ob der Kunde bereits in der Datenbank vorhanden ist. Ist dies der Fall, wird der bestehende Kundeneintrag aktualisiert, andernfalls wird ein neuer Kundeneintrag erstellt. Schließlich speichert die Methode die Bestellung in der Datenbank und gibt eine Bestellbestätigung zurück.
+	\item \verb*|generatePaymentIntent|: Diese Methode, wie in \ref{listing3.15} zu sehen ist, erzeugt eine Zahlungsabsicht \verb*|PaymentIntent| über die Stripe-API. Sie nimmt Zahlungsinformationen entgegen und erstellt die entsprechenden Parameter für Stripe, um eine sichere Zahlungstransaktion zu initiieren.
+	\item \verb*|generateOrderTrackingReference|: Generiert eine eindeutige Bestellverfolgungsnummer, die dem Kunden zur Nachverfolgung der Bestellung dient.
+\end{itemize}
+
+\newpage
+
+\begin{lstlisting}[language=Java, label=listing3.15, caption=Java-Code für die Übermittlung von bestellungen und die Generierung von Zahlungsanweisungen]
+public PurchaseResult submitOrder(Purchase purchase) {
+	// get the order info from the dto
+	Order order = purchase.getOrder();
+	
+	// generate tracking reference
+	String orderTrackingReference = generateOrderTrackingReference();
+	order.setOrderTrackingReference(orderTrackingReference);
+	
+	// populating the order with orderItems
+	Set<OrderItem> orderItemSet = purchase.getOrderItemSet();
+	if (orderItemSet != null) {
+		orderItemSet.forEach(order::add);
+	}
+	// populating order with the Address of delivery and payment
+	order.setPaymentAddress(purchase.getPaymentAddress());
+	order.setDeliveryAddress(purchase.getDeliveryAddress());
+	
+	// populating the customer with the order
+	Customer customer = purchase.getCustomer();
+	
+	// check if this customer already made a purchase
+	String c_email = customer.getEmail();
+	
+	Customer customerAlreadyInTheDb=customerRepository.findByEmail(c_email);
+	
+	if(customerAlreadyInTheDb != null)
+	{
+		// we found our customer
+		customer = customerAlreadyInTheDb;
+	}
+	customer.add(order);
+	
+	// saving into the DB
+	customerRepository.save(customer);
+	
+	// return a response
+	return new PurchaseResult(orderTrackingReference);
+}
+
+public PaymentIntent generatePaymentIntent
+			(PaymentInformation paymentInformation) throws StripeException {
+	List<String> supportedPaymentMethods = new ArrayList<>();
+	supportedPaymentMethods.add("card");
+	
+	Map<String, Object> params = new HashMap<>();
+	params.put("amount", paymentInformation.getAmount());
+	params.put("currency", paymentInformation.getCurrency());
+	params.put("payment_method_types", supportedPaymentMethods);
+	params.put("description", "Shopnook purchase");
+	params.put("receipt_email", paymentInformation.getReceiptEmail());
+	
+	return PaymentIntent.create(params);
+}
+\end{lstlisting}
+
+
+

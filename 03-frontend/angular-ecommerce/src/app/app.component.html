@@ -1,0 +1,53 @@
+<div class="page-wrapper">
+
+  <!-- MENU SIDEBAR-->
+  <aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+      <a routerLink = "/Products">
+        <img src="assets/images/logo.png" alt="ShopNook" class="img-responsive">
+      </a>
+    </div>
+    <app-product-category-menu></app-product-category-menu>
+
+  </aside>
+  <!-- END MENU SIDEBAR-->
+
+
+  <!-- PAGE CONTAINER-->
+  <div class="page-container">
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop">
+      <div class="section-content section-content-p30">
+        <div class="container-fluid">
+          <div class="header-wrap">
+
+            <app-search></app-search>
+
+            <app-login-state></app-login-state>
+
+            <app-cart-state></app-cart-state>
+
+            
+          </div>
+          <div class="account-wrap"></div>
+        </div>
+      </div>
+    </header>
+    <!-- END HEADER DESKTOP-->
+
+    <!-- MAIN CONTENT-->
+    <app-breadcrumb></app-breadcrumb>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- END PAGE CONTAINER-->
+
+
+<footer>
+  <ul>
+    <li><a routerLink="/about-us">About Us</a></li>
+    <li><a routerLink="/contact-us">Contact Us</a></li>
+    <li><a routerLink="/help">Help</a></li>
+  </ul>
+</footer>

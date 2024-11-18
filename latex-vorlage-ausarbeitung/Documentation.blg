@@ -1,0 +1,171 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Documentation.aux
+The style file: geralpha.bst
+A level-1 auxiliary file: chapters/Abkürzungsverzeichnis.aux
+A level-1 auxiliary file: chapters/Selbststaendigkeitserklaerung.aux
+Database file #1: literatur.bib
+Warning--string name "o." is undefined
+--line 298 of file literatur.bib
+I was expecting a `,' or a `}'---line 298 of file literatur.bib
+ :  year    = o. 
+ :               J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 306 of file literatur.bib
+I was expecting a `,' or a `}'---line 306 of file literatur.bib
+ :  year    = o. 
+ :               J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 315 of file literatur.bib
+I was expecting a `,' or a `}'---line 315 of file literatur.bib
+ :  year    = o. 
+ :               J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 323 of file literatur.bib
+I was expecting a `,' or a `}'---line 323 of file literatur.bib
+ :  year    = o. 
+ :               J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 331 of file literatur.bib
+I was expecting a `,' or a `}'---line 331 of file literatur.bib
+ :  year    = o. 
+ :               J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 347 of file literatur.bib
+I was expecting a `,' or a `}'---line 347 of file literatur.bib
+ :  year    = o. 
+ :               J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 355 of file literatur.bib
+I was expecting a `,' or a `}'---line 355 of file literatur.bib
+ :  year    = o. 
+ :               J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 364 of file literatur.bib
+I was expecting a `,' or a `}'---line 364 of file literatur.bib
+ :  year    = o. 
+ :               J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 372 of file literatur.bib
+I was expecting a `,' or a `}'---line 372 of file literatur.bib
+ :   year         = o. 
+ :                     J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 380 of file literatur.bib
+I was expecting a `,' or a `}'---line 380 of file literatur.bib
+ :   year         = o. 
+ :                     J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 388 of file literatur.bib
+I was expecting a `,' or a `}'---line 388 of file literatur.bib
+ :   year         = o. 
+ :                     J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 396 of file literatur.bib
+I was expecting a `,' or a `}'---line 396 of file literatur.bib
+ :   year         = o. 
+ :                     J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 404 of file literatur.bib
+I was expecting a `,' or a `}'---line 404 of file literatur.bib
+ :  year         = o. 
+ :                    J
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 412 of file literatur.bib
+ :   year         = o. 
+ :                     J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 429 of file literatur.bib
+I was expecting a `,' or a `}'---line 429 of file literatur.bib
+ :   year         = o. 
+ :                     J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 437 of file literatur.bib
+I was expecting a `,' or a `}'---line 437 of file literatur.bib
+ :   year         = o. 
+ :                     J
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 445 of file literatur.bib
+ :   year         = o. 
+ :                     J
+I'm skipping whatever remains of this entry
+Warning--string name "o." is undefined
+--line 464 of file literatur.bib
+I was expecting a `,' or a `}'---line 464 of file literatur.bib
+ :   year         = o. 
+ :                     J
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in HTML/CSS:2024
+Warning--to sort, need author or key in Angular:2024
+Warning--to sort, need author or key in Angular2:2024
+Warning--to sort, need author or key in Angular3:2024
+Warning--to sort, need author or key in Java:2024
+Warning--to sort, need author or key in REST:2024
+Warning--to sort, need author or key in wiki:listing
+Warning--to sort, need author or key in HTTPS:2024
+Name 6 in "Islam, Mazharul and Rahaman, Sazzadur and Meng, Na and Hassanshahi, Behnaz and Krishnan, Padmanabhan and Danfeng, and Yao," has a comma at the end for entry Spring-Security:2020
+while executing---line 1296 of file geralpha.bst
+Name 7 in "Islam, Mazharul and Rahaman, Sazzadur and Meng, Na and Hassanshahi, Behnaz and Krishnan, Padmanabhan and Danfeng, and Yao," has a comma at the end for entry Spring-Security:2020
+while executing---line 1296 of file geralpha.bst
+Name 6 in "Islam, Mazharul and Rahaman, Sazzadur and Meng, Na and Hassanshahi, Behnaz and Krishnan, Padmanabhan and Danfeng, and Yao," has a comma at the end for entry Spring-Security:2020
+while executing---line 1361 of file geralpha.bst
+Name 7 in "Islam, Mazharul and Rahaman, Sazzadur and Meng, Na and Hassanshahi, Behnaz and Krishnan, Padmanabhan and Danfeng, and Yao," has a comma at the end for entry Spring-Security:2020
+while executing---line 1361 of file geralpha.bst
+Warning--empty journal in Spring-Security:2020
+Warning--empty journal in schmiedehausen2018single
+You've used 36 entries,
+            2768 wiz_defined-function locations,
+            790 strings with 9847 characters,
+and the built_in function-call counts, 10794 in all, are:
+= -- 1127
+> -- 303
+< -- 25
++ -- 98
+- -- 85
+* -- 632
+:= -- 1587
+add.period$ -- 103
+call.type$ -- 36
+change.case$ -- 146
+chr.to.int$ -- 25
+cite$ -- 54
+duplicate$ -- 470
+empty$ -- 1006
+format.name$ -- 132
+if$ -- 2435
+int.to.chr$ -- 12
+int.to.str$ -- 0
+missing$ -- 10
+newline$ -- 179
+num.names$ -- 84
+pop$ -- 362
+preamble$ -- 1
+purify$ -- 218
+quote$ -- 0
+skip$ -- 395
+stack$ -- 0
+substring$ -- 281
+swap$ -- 105
+text.length$ -- 25
+text.prefix$ -- 20
+top$ -- 0
+type$ -- 288
+warning$ -- 10
+while$ -- 61
+width$ -- 42
+write$ -- 437
+(There were 22 error messages)

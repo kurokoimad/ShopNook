@@ -1,0 +1,21 @@
+/* Target the custom checkbox container */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Ensure the label is displayed correctly */
+  .custom-checkbox label {
+    display: inline-block;
+    margin-left: 8px; /* Adjust spacing as needed */
+    writing-mode: horizontal-tb;
+  }
+  
+  /* Ensure the input checkbox is displayed correctly */
+  .custom-checkbox input[type="checkbox"] {
+    margin: 0; /* Remove default margin if any */
+  }
+
+
+
+  
